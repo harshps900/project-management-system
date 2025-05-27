@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Management System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Project Management Dashboard</h1>
+
+    <section>
+        <h2>Create / Edit Project</h2>
+        <form id="projectForm">
+            <input type="hidden" id="editProjectIndex" value="-1">
+            <input type="text" id="projectName" placeholder="Project Name" required><br>
+            <input type="number" id="projectPrice" placeholder="Price" required><br>
+            <input type="date" id="projectDueDate" required><br>
+            <textarea id="projectDescription" placeholder="Description"></textarea><br>
+            <button type="submit">Save Project</button>
+        </form>
+    </section>
+    <section>
+        <h2>Projects List</h2>
+        <div id="projectList"></div>
+    </section>
+    
+    <section>
+        <h2>Create / Edit Task</h2>
+        <form id="taskForm">
+            <input type="hidden" id="editTaskIndex" value="-1">
+            <select id="taskProject"></select><br>
+            <input type="text" id="taskName" placeholder="Task Name" required><br>
+            <input type="date" id="taskDueDate" required><br>
+            <textarea id="taskDescription" placeholder="Description"></textarea><br>
+            <button type="submit">Save Task</button>
+        </form>
+    </section>
+    <section>
+        <h2>Tasks List</h2>
+        <div id="taskList"></div>
+    </section>
+
+    <script src="script.js" ></script>
+
+</body>
+</html>
