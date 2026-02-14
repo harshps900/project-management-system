@@ -7,8 +7,8 @@ import { Button } from '@/components/ui/Button';
 export const PromoBanner = () => {
     return (
         <section className="py-24 bg-accent overflow-hidden relative">
-            {/* Decorative text */}
-            <div className="absolute top-1/2 left-0 -translate-y-1/2 -translate-x-12 opacity-10 pointer-events-none select-none overflow-hidden">
+            {/* Decorative text - Hidden on mobile to prevent overflow */}
+            <div className="absolute top-1/2 left-0 -translate-y-1/2 -translate-x-12 opacity-10 pointer-events-none select-none overflow-hidden hidden lg:block">
                 <span className="text-[15rem] font-black leading-none text-white whitespace-nowrap uppercase tracking-tighter">
                     SALE SALE SALE SALE
                 </span>
@@ -20,7 +20,7 @@ export const PromoBanner = () => {
                         initial={{ opacity: 0, scale: 0.9 }}
                         whileInView={{ opacity: 1, scale: 1 }}
                         viewport={{ once: true }}
-                        className="text-5xl md:text-7xl font-black text-white uppercase tracking-tighter leading-[0.9] mb-6"
+                        className="text-4xl sm:text-6xl md:text-7xl font-black text-white uppercase tracking-tighter leading-[0.9] mb-6"
                     >
                         Spring / Summer <br /> Opening Sale
                     </motion.h2>

@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/Button';
 
 export const Footer = () => {
     return (
-        <footer className="bg-secondary border-t border-border pt-20 pb-10">
+        <footer className="bg-secondary border-t border-border pt-12 pb-8 md:pt-20 md:pb-10">
             <div className="max-w-7xl mx-auto px-4 md:px-8">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
                     {/* Brand Column */}

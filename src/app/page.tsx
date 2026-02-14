@@ -17,13 +17,13 @@ export default function Home() {
       <CategoryGrid />
 
       {/* 3. Featured Products Section */}
-      <section className="py-24 bg-white px-4 md:px-8">
+      <section className="py-16 md:py-24 bg-white px-4 md:px-8">
         <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-4">
+          <div className="flex flex-col md:flex-row justify-between items-center md:items-end mb-12 md:mb-16 gap-6 md:gap-4 text-center md:text-left">
             <div>
               <span className="text-accent text-[10px] font-black uppercase tracking-[0.3em] mb-4 block">New Drop</span>
-              <h2 className="text-4xl md:text-6xl font-black text-primary uppercase tracking-tighter leading-none">
-                Featured <br /> Pieces
+              <h2 className="text-3xl md:text-6xl font-black text-primary uppercase tracking-tighter leading-none">
+                Featured <br className="hidden md:block" /> Pieces
               </h2>
             </div>
             <div className="flex gap-4">
@@ -45,22 +45,22 @@ export default function Home() {
       <PromoBanner />
 
       {/* 5. Editorial / Testimonial Section */}
-      <section className="py-32 bg-secondary px-4 md:px-8 overflow-hidden">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-          <div className="relative">
-            <div className="absolute -top-10 -left-10 w-40 h-40 bg-accent/10 rounded-none z-0" />
+      <section className="py-20 md:py-32 bg-secondary px-4 md:px-8 overflow-hidden">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-20 items-center">
+          <div className="relative flex flex-col items-center lg:items-start text-center lg:text-left">
+            <div className="absolute -top-10 -left-10 w-40 h-40 bg-accent/10 rounded-none z-0 hidden lg:block" />
             <h2 className="text-4xl md:text-7xl font-black text-primary uppercase tracking-tighter leading-[0.85] relative z-10">
               The <br /> Collective <br /> Voice
             </h2>
-            <div className="mt-12 space-y-8">
-              <div className="border-l-4 border-accent pl-8 py-2">
-                <div className="flex gap-1 mb-4 text-accent">
+            <div className="mt-8 md:mt-12 space-y-8 flex flex-col items-center lg:items-start">
+              <div className="border-l-0 lg:border-l-4 border-accent pl-0 lg:pl-8 py-2">
+                <div className="flex gap-1 mb-4 text-accent justify-center lg:justify-start">
                   {[...Array(5)].map((_, i) => <Star key={i} className="w-4 h-4 fill-current" />)}
                 </div>
-                <p className="text-lg font-bold text-primary uppercase tracking-tight leading-snug italic mb-4">
+                <p className="text-base md:text-lg font-bold text-primary uppercase tracking-tight leading-snug italic mb-4 max-w-md mx-auto lg:mx-0">
                   "Uncompromising quality and a vision that truly defines modern luxury. ModernCart is more than a store; it's a statement."
                 </p>
-                <p className="text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground">— ADRIAN VOORHEES, VOGUE EDITORIAL</p>
+                <p className="text-[9px] md:text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground">— ADRIAN VOORHEES, VOGUE EDITORIAL</p>
               </div>
             </div>
           </div>
@@ -73,8 +73,8 @@ export default function Home() {
       </section>
 
       {/* 6. Bold Footer CTA */}
-      <section className="py-24 bg-primary px-4 text-center">
-        <h2 className="text-4xl md:text-7xl font-black text-white uppercase tracking-tighter mb-8 italic">
+      <section className="py-16 md:py-24 bg-primary px-4 text-center">
+        <h2 className="text-3xl md:text-7xl font-black text-white uppercase tracking-tighter mb-8 italic outline-text sm:not-italic">
           Join the Movement
         </h2>
         <p className="text-white/60 text-xs font-bold uppercase tracking-[0.4em] mb-12 max-w-xl mx-auto leading-relaxed">

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useMemo, Suspense } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { products } from '@/data/mockData';
 import { ProductCard } from '@/features/products/components/ProductCard';
@@ -11,7 +11,7 @@ import { Filter, X } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 import { staggerContainer } from '@/lib/animationVariants';
 
-export default function ShopPage() {
+function ShopContent() {
     const searchParams = useSearchParams();
     const router = useRouter();
 
@@ -67,7 +67,7 @@ export default function ShopPage() {
     const filteredProducts = useMemo(() => {
         let result = [...products];
 
-        // 1. Multi-Category Filter (Union within category, intersection with other filters)
+        // 1. Multi-Category Filter
         if (filters.categories.length > 0) {
             result = result.filter(p => {
                 const slug = p.category.toLowerCase().replace(' ', '-');
@@ -109,15 +109,15 @@ export default function ShopPage() {
     return (
         <div className="bg-background min-h-screen">
             {/* Shop Header */}
-            <section className="bg-secondary pt-32 pb-20 px-4 md:px-8 border-b border-border">
+            <section className="bg-secondary pt-24 pb-12 md:pt-32 md:pb-20 px-4 md:px-8 border-b border-border">
                 <div className="max-w-7xl mx-auto">
-                    <div className="flex flex-col gap-4">
-                        <div className="flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.3em] text-muted-foreground">
+                    <div className="flex flex-col items-center md:items-start text-center md:text-left gap-4">
+                        <div className="flex items-center gap-2 text-[9px] md:text-[10px] font-black uppercase tracking-[0.3em] text-muted-foreground">
                             <span>Home</span>
                             <span>/</span>
                             <span className="text-primary">Shop All</span>
                         </div>
-                        <h1 className="text-5xl md:text-8xl font-black uppercase tracking-tighter leading-none text-primary">
+                        <h1 className="text-4xl sm:text-6xl md:text-8xl font-black uppercase tracking-tighter leading-none text-primary">
                             {filters.categories.length === 1 ? filters.categories[0].replace('-', ' ') : 'The Collection'}
                         </h1>
                     </div>
@@ -225,5 +225,17 @@ export default function ShopPage() {
                 )}
             </AnimatePresence>
         </div>
+    );
+}
+
+export default function ShopPage() {
+    return (
+        <Suspense fallback={
+            <div className="min-h-screen bg-background flex items-center justify-center">
+                <div className="w-8 h-8 border-4 border-accent border-t-transparent rounded-full animate-spin" />
+            </div>
+        }>
+            <ShopContent />
+        </Suspense>
     );
 }

@@ -45,6 +45,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         <motion.div
             variants={fadeUp}
             whileHover={{ y: -8, transition: { duration: 0.4, ease: "easeOut" } }}
+            whileTap={{ scale: 0.98 }}
             className="group relative bg-background border border-border overflow-hidden shadow-none hover:shadow-2xl hover:shadow-primary/5 transition-shadow duration-500"
         >
             <Link href={`/shop/${product.slug}`} className="block">
@@ -71,42 +72,42 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
                         </div>
                     )}
 
-                    {/* Hover Actions Overlay */}
+                    {/* Actions Overlay - Accessible on mobile via hover/active state */}
                     <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center gap-4 z-20">
                         <Button
                             variant="accent"
                             size="icon"
-                            className="h-12 w-12 rounded-none transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-75"
+                            className="h-10 w-10 sm:h-12 sm:w-12 rounded-none transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-75"
                             onClick={(e) => handleAddToCart(e)}
                         >
-                            <ShoppingCart className="w-5 h-5" />
+                            <ShoppingCart className="w-4 h-4 sm:w-5 sm:h-5" />
                         </Button>
                         <Button
                             variant="primary"
                             size="icon"
-                            className="h-12 w-12 rounded-none border border-white/20 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-150"
+                            className="h-10 w-10 sm:h-12 sm:w-12 rounded-none border border-white/20 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-150"
                             onClick={(e) => { e.stopPropagation(); }}
                         >
-                            <Eye className="w-5 h-5" />
+                            <Eye className="w-4 h-4 sm:w-5 sm:h-5" />
                         </Button>
                     </div>
                 </motion.div>
 
                 {/* Info */}
-                <div className="p-6">
+                <div className="p-4 sm:p-6">
                     <div className="flex justify-between items-start mb-2">
-                        <p className="text-[10px] uppercase tracking-[0.2em] font-black text-accent">{product.category}</p>
-                        <p className="text-sm font-black text-foreground">${product.price}</p>
+                        <p className="text-[9px] sm:text-[10px] uppercase tracking-[0.2em] font-black text-accent">{product.category}</p>
+                        <p className="text-xs sm:text-sm font-black text-foreground">${product.price}</p>
                     </div>
-                    <h3 className="text-sm font-bold uppercase tracking-widest text-foreground group-hover:text-accent transition-colors truncate">
+                    <h3 className="text-xs sm:text-sm font-bold uppercase tracking-widest text-foreground group-hover:text-accent transition-colors truncate">
                         {product.name}
                     </h3>
 
-                    {/* Quick Add with improved slide-up */}
-                    <div className="relative h-0 group-hover:h-12 transition-all duration-500 overflow-hidden">
-                        <div className="mt-4 pt-4 border-t border-border flex items-center justify-between opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                            <span className="text-[10px] font-black uppercase tracking-widest text-muted-foreground">Quick Add +</span>
-                            <div className="flex gap-1">
+                    {/* Quick Add - Always visible on small screens for accessibility, hidden on large screens until hover */}
+                    <div className="relative h-auto sm:h-0 sm:group-hover:h-12 transition-all duration-500 overflow-hidden mt-4 sm:mt-0">
+                        <div className="pt-4 border-t border-border flex items-center justify-between opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity duration-300">
+                            <span className="text-[9px] font-black uppercase tracking-widest text-muted-foreground mr-2">Add +</span>
+                            <div className="flex gap-1 overflow-x-auto no-scrollbar py-1">
                                 {['S', 'M', 'L', 'XL'].map((size, idx) => (
                                     <motion.span
                                         key={size}
@@ -114,7 +115,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
                                         whileInView={{ opacity: 1, scale: 1 }}
                                         transition={{ delay: idx * 0.05 }}
                                         onClick={(e) => handleAddToCart(e, size)}
-                                        className="text-[9px] font-bold w-6 h-6 flex items-center justify-center border border-border hover:bg-primary hover:text-white transition-all cursor-pointer uppercase"
+                                        className="text-[8px] sm:text-[9px] font-bold w-6 h-6 sm:w-7 sm:h-7 flex items-center justify-center border border-border hover:bg-primary hover:text-white transition-all cursor-pointer uppercase shrink-0"
                                     >
                                         {size}
                                     </motion.span>

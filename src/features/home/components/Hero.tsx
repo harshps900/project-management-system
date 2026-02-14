@@ -1,7 +1,7 @@
 "use client";
 
-import React from 'react';
-import { motion } from 'framer-motion';
+import Image from 'next/image';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { Button } from '@/components/ui/Button';
 import { Badge } from '@/components/ui/Badge';
 import { ArrowRight } from 'lucide-react';
@@ -9,6 +9,10 @@ import { cn } from '@/utils/cn';
 import { staggerContainer, lineReveal, fadeUp } from '@/lib/animationVariants';
 
 export const Hero = () => {
+    const { scrollY } = useScroll();
+    const y = useTransform(scrollY, [0, 500], [0, 150]);
+    const opacity = useTransform(scrollY, [0, 500], [1, 0.5]);
+
     const headlineLines = [
         "Define",
         "Your Bold",
@@ -20,21 +24,28 @@ export const Hero = () => {
             {/* Background Image / Overlay */}
             <div className="absolute inset-0 z-0">
                 <motion.div
-                    initial={{ scale: 1.1 }}
-                    animate={{ scale: 1 }}
-                    transition={{ duration: 1.5, ease: "easeOut" }}
-                    className="h-full w-full bg-[url('https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-center"
-                />
-                <div className="absolute inset-0 bg-black/30" />
+                    style={{ y, opacity }}
+                    className="relative h-full w-full"
+                >
+                    <Image
+                        src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=2070&auto=format&fit=crop"
+                        alt="Hero Aesthetic"
+                        fill
+                        priority
+                        className="object-cover object-[center_20%] md:object-center transition-transform duration-1000"
+                    />
+                </motion.div>
+                <div className="absolute inset-0 bg-black/40 z-10" />
             </div>
 
             {/* Content */}
-            <div className="relative z-10 h-full max-w-7xl mx-auto px-4 md:px-8 flex flex-col justify-center">
+            <div className="relative z-10 h-full max-w-7xl mx-auto px-4 md:px-8 flex flex-col items-center md:items-start justify-center text-center md:text-left">
                 <motion.div
                     variants={staggerContainer}
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true }}
+                    className="flex flex-col items-center md:items-start"
                 >
                     <motion.div variants={fadeUp}>
                         <Badge variant="neutral" className="mb-6 bg-white/20 text-white backdrop-blur-md border-white/30 px-4 py-1">
@@ -48,7 +59,7 @@ export const Hero = () => {
                                 <motion.h1
                                     variants={lineReveal}
                                     className={cn(
-                                        "text-5xl md:text-8xl font-black text-white leading-[0.9] tracking-tighter uppercase",
+                                        "text-4xl sm:text-6xl md:text-8xl font-black text-white leading-[0.9] tracking-tighter uppercase",
                                         line === "Your Bold" && "text-accent underline decoration-4 underline-offset-8"
                                     )}
                                 >

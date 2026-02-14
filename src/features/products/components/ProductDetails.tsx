@@ -61,11 +61,11 @@ export const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
             </div>
 
             {/* Name & Price */}
-            <div className="mb-12">
-                <h1 className="text-4xl md:text-6xl font-black uppercase tracking-tighter leading-none mb-4 text-primary">
+            <div className="mb-8 md:mb-12">
+                <h1 className="text-3xl sm:text-4xl md:text-6xl font-black uppercase tracking-tighter leading-none mb-4 text-primary">
                     {product.name}
                 </h1>
-                <p className="text-2xl font-black text-primary">${product.price}</p>
+                <p className="text-xl md:text-2xl font-black text-primary">${product.price}</p>
             </div>
 
             {/* Size Selection */}
@@ -82,7 +82,7 @@ export const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
                             key={size}
                             onClick={() => setSelectedSize(size)}
                             className={cn(
-                                "w-16 h-16 flex items-center justify-center border-2 text-[10px] font-black transition-all",
+                                "w-12 h-12 sm:w-16 sm:h-16 flex items-center justify-center border-2 text-[10px] font-black transition-all",
                                 selectedSize === size
                                     ? "bg-primary text-white border-primary"
                                     : "bg-transparent text-primary border-border hover:border-primary"
@@ -99,18 +99,18 @@ export const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
                 <Button
                     variant="accent"
                     size="lg"
-                    className="h-16 text-xs font-black tracking-[0.2em]"
+                    className="h-14 sm:h-16 text-[10px] sm:text-xs font-black tracking-[0.2em]"
                     disabled={!selectedSize || isAdding}
                     onClick={handleAddToCart}
                 >
                     {isAdding ? "ADDING TO COLLECTION..." : "ADD TO CART"}
                 </Button>
                 <div className="flex gap-4">
-                    <Button variant="outline" className="flex-1 h-14 border-primary/20 text-primary">
+                    <Button variant="outline" className="flex-1 h-12 sm:h-14 border-primary/20 text-primary text-[10px] font-black tracking-widest">
                         <Heart className="w-4 h-4 mr-2" />
                         WISH LIST
                     </Button>
-                    <Button variant="outline" size="icon" className="h-14 w-14 border-primary/20 text-primary">
+                    <Button variant="outline" size="icon" className="h-12 w-12 sm:h-14 sm:w-14 border-primary/20 text-primary">
                         <Share2 className="w-4 h-4" />
                     </Button>
                 </div>
