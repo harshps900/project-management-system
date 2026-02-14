@@ -7,26 +7,26 @@ import { Button } from '@/components/ui/Button';
 
 export const Footer = () => {
     return (
-        <footer className="bg-gray-50 border-t border-gray-200 pt-16 pb-8">
+        <footer className="bg-secondary border-t border-border pt-20 pb-10">
             <div className="max-w-7xl mx-auto px-4 md:px-8">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
                     {/* Brand Column */}
                     <div className="flex flex-col gap-6">
                         <Link href="/" className="flex items-center gap-2">
-                            <div className="w-8 h-8 premium-gradient rounded-lg flex items-center justify-center">
-                                <span className="text-white font-bold text-xl">M</span>
+                            <div className="w-8 h-8 bg-primary rounded-none flex items-center justify-center">
+                                <span className="text-white font-bold text-xl uppercase">M</span>
                             </div>
-                            <span className="text-xl font-bold tracking-tight text-gradient">
+                            <span className="text-xl font-black tracking-tighter text-gradient uppercase">
                                 ModernCart
                             </span>
                         </Link>
-                        <p className="text-gray-500 text-sm leading-relaxed">
-                            Experience the future of online shopping. We provide the most premium and seamless e-commerce experience with curated collections just for you.
+                        <p className="text-muted-foreground text-xs leading-relaxed uppercase tracking-widest font-medium">
+                            The definitive destination for bold fashion. Curating the future of style with uncompromising quality and high-performance design.
                         </p>
                         <div className="flex gap-4">
                             {[Facebook, Twitter, Instagram].map((Icon, i) => (
-                                <Link key={i} href="#" className="p-2 bg-white rounded-full text-gray-400 hover:text-indigo-600 hover:shadow-md transition-all">
-                                    <Icon className="w-5 h-5" />
+                                <Link key={i} href="#" className="p-2 bg-background rounded-none text-muted-foreground hover:text-accent border border-border transition-all">
+                                    <Icon className="w-4 h-4" />
                                 </Link>
                             ))}
                         </div>
@@ -34,11 +34,11 @@ export const Footer = () => {
 
                     {/* Quick Links */}
                     <div>
-                        <h4 className="font-bold text-gray-900 mb-6">Quick Links</h4>
+                        <h4 className="font-black text-[10px] uppercase tracking-[0.2em] text-foreground mb-8">Collections</h4>
                         <ul className="flex flex-col gap-4">
-                            {['Home', 'Shop', 'Categories', 'Sale', 'About Us'].map((item) => (
+                            {['New Arrivals', 'Best Sellers', 'Bold Essentials', 'Limited Edition'].map((item) => (
                                 <li key={item}>
-                                    <Link href="#" className="text-gray-500 hover:text-indigo-600 text-sm transition-colors">
+                                    <Link href="#" className="text-muted-foreground hover:text-accent text-[10px] font-bold uppercase tracking-widest transition-colors">
                                         {item}
                                     </Link>
                                 </li>
@@ -46,13 +46,13 @@ export const Footer = () => {
                         </ul>
                     </div>
 
-                    {/* Contact Info */}
+                    {/* Support Links */}
                     <div>
-                        <h4 className="font-bold text-gray-900 mb-6">Support</h4>
+                        <h4 className="font-black text-[10px] uppercase tracking-[0.2em] text-foreground mb-8">Client Service</h4>
                         <ul className="flex flex-col gap-4">
-                            {['Contact Support', 'Shipping Policy', 'Returns & Refunds', 'Privacy Policy', 'Terms of Service'].map((item) => (
+                            {['Contact Us', 'Shipping & Returns', 'Size Guide', 'Privacy Policy'].map((item) => (
                                 <li key={item}>
-                                    <Link href="#" className="text-gray-500 hover:text-indigo-600 text-sm transition-colors">
+                                    <Link href="#" className="text-muted-foreground hover:text-accent text-[10px] font-bold uppercase tracking-widest transition-colors">
                                         {item}
                                     </Link>
                                 </li>
@@ -62,31 +62,31 @@ export const Footer = () => {
 
                     {/* Newsletter */}
                     <div>
-                        <h4 className="font-bold text-gray-900 mb-6">Newsletter</h4>
-                        <p className="text-gray-500 text-sm mb-4">
-                            Subscribe to get special offers, free giveaways, and once-in-a-lifetime deals.
+                        <h4 className="font-black text-[10px] uppercase tracking-[0.2em] text-foreground mb-8">Stay Connected</h4>
+                        <p className="text-muted-foreground text-[10px] uppercase tracking-widest font-bold mb-6 italic">
+                            Join the inner circle for exclusive access.
                         </p>
-                        <div className="flex gap-2">
+                        <div className="flex gap-0 relative">
                             <input
                                 type="email"
-                                placeholder="Enter your email"
-                                className="bg-white border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 w-full"
+                                placeholder="YOUR EMAIL ADDRESS"
+                                className="bg-background border border-border rounded-none px-4 py-3 text-[10px] font-bold tracking-widest focus:outline-none focus:ring-1 focus:ring-primary w-full placeholder:text-muted-foreground/40 uppercase"
                             />
-                            <Button size="icon" className="shrink-0">
+                            <Button variant="primary" size="icon" className="shrink-0 absolute right-0">
                                 <Send className="w-4 h-4" />
                             </Button>
                         </div>
                     </div>
                 </div>
 
-                <div className="border-t border-gray-200 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-                    <p className="text-gray-400 text-xs">
-                        © {new Date().getFullYear()} ModernCart. All rights reserved.
+                <div className="border-t border-border pt-10 flex flex-col md:flex-row justify-between items-center gap-6">
+                    <p className="text-muted-foreground text-[9px] font-black uppercase tracking-[0.3em]">
+                        © {new Date().getFullYear()} MODERNCART. BOLD BY DESIGN.
                     </p>
-                    <div className="flex gap-6">
-                        <Link href="#" className="text-gray-400 hover:text-gray-600 text-xs transition-colors">Privacy Policy</Link>
-                        <Link href="#" className="text-gray-400 hover:text-gray-600 text-xs transition-colors">Terms of Service</Link>
-                        <Link href="#" className="text-gray-400 hover:text-gray-600 text-xs transition-colors">Cookies</Link>
+                    <div className="flex gap-8">
+                        {['Privacy', 'Terms', 'Cookies'].map((item) => (
+                            <Link key={item} href="#" className="text-muted-foreground hover:text-foreground text-[9px] font-black uppercase tracking-[0.2em] transition-colors">{item}</Link>
+                        ))}
                     </div>
                 </div>
             </div>

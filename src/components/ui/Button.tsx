@@ -5,7 +5,7 @@ import { motion, HTMLMotionProps } from 'framer-motion';
 import { cn } from '@/utils/cn';
 
 interface ButtonProps extends HTMLMotionProps<'button'> {
-    variant?: 'primary' | 'secondary' | 'outline' | 'ghost' | 'danger';
+    variant?: 'primary' | 'secondary' | 'accent' | 'outline' | 'ghost' | 'danger';
     size?: 'sm' | 'md' | 'lg' | 'icon';
     isLoading?: boolean;
 }
@@ -13,17 +13,18 @@ interface ButtonProps extends HTMLMotionProps<'button'> {
 export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     ({ className, variant = 'primary', size = 'md', isLoading, children, ...props }, ref) => {
         const variants = {
-            primary: 'bg-indigo-600 text-white hover:bg-indigo-700 shadow-md',
-            secondary: 'bg-white text-gray-900 border border-gray-200 hover:bg-gray-50 shadow-sm',
-            outline: 'bg-transparent border-2 border-indigo-600 text-indigo-600 hover:bg-indigo-50',
-            ghost: 'bg-transparent text-gray-600 hover:bg-gray-100 hover:text-gray-900',
-            danger: 'bg-red-600 text-white hover:bg-red-700 shadow-sm',
+            primary: 'bg-primary text-primary-foreground hover:bg-primary/90 shadow-md',
+            secondary: 'bg-secondary text-secondary-foreground border border-border hover:bg-secondary/80',
+            accent: 'bg-accent text-accent-foreground hover:bg-accent/90 shadow-md',
+            outline: 'bg-transparent border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground',
+            ghost: 'bg-transparent text-muted-foreground hover:bg-secondary hover:text-foreground',
+            danger: 'bg-red-600 text-white hover:bg-red-700',
         };
 
         const sizes = {
-            sm: 'px-3 py-1.5 text-sm',
-            md: 'px-4 py-2',
-            lg: 'px-6 py-3 text-lg',
+            sm: 'px-3 py-1.5 text-xs tracking-wider uppercase font-bold',
+            md: 'px-5 py-2.5 text-sm tracking-widest uppercase font-bold',
+            lg: 'px-8 py-4 text-base tracking-widest uppercase font-bold',
             icon: 'p-2 w-10 h-10 flex items-center justify-center',
         };
 
@@ -33,7 +34,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 className={cn(
-                    'inline-flex items-center justify-center rounded-lg font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none',
+                    'inline-flex items-center justify-center rounded-none transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none',
                     variants[variant],
                     sizes[size],
                     className

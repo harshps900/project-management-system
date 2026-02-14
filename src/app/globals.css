@@ -1,22 +1,21 @@
 @import "tailwindcss";
 
-@import "tailwindcss";
-
 :root {
   --background: #ffffff;
   --foreground: #0f172a;
-  --primary: #4f46e5;
+  --primary: #0f172a;
   --primary-foreground: #ffffff;
   --secondary: #f1f5f9;
-  --secondary-foreground: #1e293b;
-  --accent: #f8fafc;
-  --accent-foreground: #0f172a;
+  --secondary-foreground: #0f172a;
+  --accent: #e11d48;
+  --accent-foreground: #ffffff;
   --muted: #f1f5f9;
   --muted-foreground: #64748b;
   --border: #e2e8f0;
   --input: #e2e8f0;
-  --ring: #4f46e5;
-  --radius: 0.75rem;
+  --ring: #e11d48;
+  --radius: 0rem;
+  /* Bold, sharp edges for fashion feel */
 }
 
 @theme inline {
@@ -49,18 +48,23 @@ body {
 }
 
 .glass {
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(15, 23, 42, 0.05);
 }
 
 .premium-gradient {
-  background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+}
+
+.accent-gradient {
+  background: linear-gradient(135deg, #e11d48 0%, #be123c 100%);
 }
 
 .text-gradient {
-  background: linear-gradient(135deg, #1e293b 0%, #4f46e5 100%);
+  background: linear-gradient(135deg, #0f172a 0%, #e11d48 100%);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 }

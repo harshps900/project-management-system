@@ -7,9 +7,16 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@/components/ui/Button';
 import { cn } from '@/utils/cn';
 
+import { useSelector } from 'react-redux';
+import { RootState } from '@/lib/store';
+
 export const Navbar = () => {
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+    // Get cart items count from Redux
+    const cartItems = useSelector((state: RootState) => state.cart.items);
+    const cartCount = cartItems.reduce((total, item) => total + item.quantity, 0);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -29,10 +36,10 @@ export const Navbar = () => {
             <div className="max-w-7xl mx-auto flex items-center justify-between">
                 {/* Logo */}
                 <Link href="/" className="flex items-center gap-2">
-                    <div className="w-8 h-8 premium-gradient rounded-lg flex items-center justify-center">
-                        <span className="text-white font-bold text-xl">M</span>
+                    <div className="w-8 h-8 bg-primary rounded-none flex items-center justify-center">
+                        <span className="text-white font-bold text-xl uppercase">M</span>
                     </div>
-                    <span className="text-xl font-bold tracking-tight text-gradient hidden sm:block">
+                    <span className="text-xl font-black tracking-tighter text-gradient hidden sm:block uppercase">
                         ModernCart
                     </span>
                 </Link>
@@ -43,7 +50,7 @@ export const Navbar = () => {
                         <Link
                             key={item}
                             href={`/${item.toLowerCase() === 'home' ? '' : item.toLowerCase()}`}
-                            className="text-sm font-medium text-gray-600 hover:text-indigo-600 transition-colors"
+                            className="text-xs font-bold uppercase tracking-widest text-gray-600 hover:text-accent transition-colors"
                         >
                             {item}
                         </Link>
@@ -52,20 +59,22 @@ export const Navbar = () => {
 
                 {/* Actions */}
                 <div className="flex items-center gap-2 md:gap-4">
-                    <div className="hidden sm:flex items-center bg-gray-100 rounded-full px-3 py-1.5 focus-within:ring-2 focus-within:ring-indigo-500 transition-all shrink">
-                        <Search className="w-4 h-4 text-gray-400" />
+                    <div className="hidden sm:flex items-center bg-secondary rounded-none px-3 py-1.5 focus-within:ring-1 focus-within:ring-primary transition-all shrink">
+                        <Search className="w-4 h-4 text-muted-foreground" />
                         <input
                             type="text"
-                            placeholder="Search items..."
-                            className="bg-transparent border-none focus:outline-none text-sm ml-2 w-24 lg:w-48"
+                            placeholder="SEARCH..."
+                            className="bg-transparent border-none focus:outline-none text-[10px] font-bold tracking-widest ml-2 w-24 lg:w-48 placeholder:text-muted-foreground/50 uppercase"
                         />
                     </div>
 
                     <Button variant="ghost" size="icon" className="relative">
                         <ShoppingCart className="w-5 h-5" />
-                        <span className="absolute -top-1 -right-1 w-4 h-4 premium-gradient text-white text-[10px] flex items-center justify-center rounded-full">
-                            0
-                        </span>
+                        {cartCount > 0 && (
+                            <span className="absolute -top-1 -right-1 w-4 h-4 bg-accent text-white text-[9px] font-bold flex items-center justify-center rounded-none">
+                                {cartCount}
+                            </span>
+                        )}
                     </Button>
 
                     <Button variant="ghost" size="icon" className="hidden sm:flex">
@@ -90,24 +99,24 @@ export const Navbar = () => {
                         initial={{ opacity: 0, y: -20 }}
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -20 }}
-                        className="absolute top-full left-0 right-0 glass border-t border-gray-100 p-4 md:hidden flex flex-col gap-4"
+                        className="absolute top-full left-0 right-0 glass border-t border-border p-4 md:hidden flex flex-col gap-4"
                     >
                         {['Home', 'Shop', 'Categories', 'About'].map((item) => (
                             <Link
                                 key={item}
                                 href={`/${item.toLowerCase() === 'home' ? '' : item.toLowerCase()}`}
-                                className="text-lg font-medium text-gray-700 p-2 hover:bg-indigo-50 rounded-lg transition-colors"
+                                className="text-sm font-bold uppercase tracking-widest text-foreground p-2 hover:bg-secondary transition-colors"
                                 onClick={() => setIsMobileMenuOpen(false)}
                             >
                                 {item}
                             </Link>
                         ))}
-                        <div className="flex items-center bg-gray-100 rounded-lg px-3 py-3 mt-2">
-                            <Search className="w-5 h-5 text-gray-400" />
+                        <div className="flex items-center bg-secondary rounded-none px-3 py-3 mt-2">
+                            <Search className="w-5 h-5 text-muted-foreground" />
                             <input
                                 type="text"
-                                placeholder="Search items..."
-                                className="bg-transparent border-none focus:outline-none text-base ml-2 w-full"
+                                placeholder="SEARCH..."
+                                className="bg-transparent border-none focus:outline-none text-xs font-bold tracking-widest ml-2 w-full uppercase"
                             />
                         </div>
                     </motion.div>
