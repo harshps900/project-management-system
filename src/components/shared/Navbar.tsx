@@ -7,12 +7,14 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@/components/ui/Button';
 import { cn } from '@/utils/cn';
 
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '@/lib/store';
+import { setCartOpen } from '@/features/cart/cartSlice';
 
 export const Navbar = () => {
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    const dispatch = useDispatch();
 
     // Get cart items count from Redux
     const cartItems = useSelector((state: RootState) => state.cart.items);
@@ -68,7 +70,12 @@ export const Navbar = () => {
                         />
                     </div>
 
-                    <Button variant="ghost" size="icon" className="relative">
+                    <Button
+                        variant="ghost"
+                        size="icon"
+                        className="relative"
+                        onClick={() => dispatch(setCartOpen(true))}
+                    >
                         <ShoppingCart className="w-5 h-5" />
                         {cartCount > 0 && (
                             <span className="absolute -top-1 -right-1 w-4 h-4 bg-accent text-white text-[9px] font-bold flex items-center justify-center rounded-none">

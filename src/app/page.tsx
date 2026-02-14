@@ -66,7 +66,7 @@ export default function Home() {
           </div>
 
           <div className="relative h-[600px] w-full hidden lg:block">
-            <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1539109132381-31a15b22b07d?q=80&w=800&auto=format&fit=crop')] bg-cover bg-center border-8 border-white shadow-2xl skew-y-3" />
+            <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1509631179647-0177331693ae?q=80&w=800&auto=format&fit=crop')] bg-cover bg-center border-8 border-white shadow-2xl skew-y-3" />
             <div className="absolute inset-0 border border-primary/10 translate-x-10 translate-y-10 -z-10" />
           </div>
         </div>

@@ -38,11 +38,18 @@ const cartSlice = createSlice({
             state.items = state.items.filter((item) => !(item.id === action.payload.id && item.size === action.payload.size));
             state.totalAmount = state.items.reduce((total, item) => total + item.price * item.quantity, 0);
         },
+        updateQuantity: (state, action: PayloadAction<{ id: string; size?: string; delta: number }>) => {
+            const item = state.items.find((i) => i.id === action.payload.id && i.size === action.payload.size);
+            if (item) {
+                item.quantity = Math.max(1, item.quantity + action.payload.delta);
+                state.totalAmount = state.items.reduce((total, item) => total + item.price * item.quantity, 0);
+            }
+        },
         setCartOpen: (state, action: PayloadAction<boolean>) => {
             state.isOpen = action.payload;
         },
     },
 });
 
-export const { addItem, removeItem, setCartOpen } = cartSlice.actions;
+export const { addItem, removeItem, updateQuantity, setCartOpen } = cartSlice.actions;
 export default cartSlice.reducer;

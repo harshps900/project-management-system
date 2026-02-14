@@ -3,6 +3,8 @@ import { Inter } from "next/font/google";
 import { Providers } from "@/components/shared/Providers";
 import { Navbar } from "@/components/shared/Navbar";
 import { Footer } from "@/components/shared/Footer";
+import { CartDrawer } from "@/features/cart/components/CartDrawer";
+import { CartPersistence } from "@/features/cart/components/CartPersistence";
 import "./globals.css";
 
 const inter = Inter({
@@ -24,7 +26,9 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${inter.variable} font-sans antialiased`}>
         <Providers>
+          <CartPersistence />
           <Navbar />
+          <CartDrawer />
           <main className="min-h-screen pt-20">
             {children}
           </main>

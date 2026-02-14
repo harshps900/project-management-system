@@ -43,7 +43,7 @@ export const PromoBanner = () => {
                     viewport={{ once: true }}
                     className="relative h-96 w-64 border-4 border-white hidden lg:block"
                 >
-                    <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1485230895905-ec17bd36b7c5?q=80&w=800&auto=format&fit=crop')] bg-cover bg-center m-2 shadow-2xl" />
+                    <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=800&auto=format&fit=crop')] bg-cover bg-center m-2 shadow-2xl" />
                     <div className="absolute -bottom-4 -right-4 bg-white text-accent p-4 font-black text-xl uppercase tracking-tighter shadow-xl">
                         40% OFF
                     </div>
